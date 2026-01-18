@@ -1,4 +1,4 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import render , redirect , get_object_or_404
 from .models import Employe
 from .forms import EmployeForm
 
@@ -14,4 +14,19 @@ def ajouter_employe (request):
         form.save()
         return redirect('liste_employes')
     return render(request , 'employe/formulaire.html' , {'form' : form})
+
+def modifier_employe (request, id) :
+    employe = get_object_or_404(Employe, id=id)
+    form = EmployeForm(request.POST or None, instance=employe)
+    if form.is_valid() :
+        form.save()
+        return redirect('liste_employes')
+    return render(request , 'employe/formulaire.html' , {'form' : form})
+
+def supprimer_employe (request, id) :
+    employe = get_object_or_404(Employe, id=id)
+    if request.method == "POST":
+        employe.delete()
+        return redirect('liste_employes')
+        
 
