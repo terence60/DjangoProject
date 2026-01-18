@@ -7,3 +7,6 @@ def liste_employes(request):
     employes = Employe.objects.all()
     return render(request , 'employe/list.html' , {'employes' : employes}) 
 
+# def ajouter_employe (request):
+
+
