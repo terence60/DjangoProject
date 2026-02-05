@@ -3,7 +3,7 @@
 
 {% block content %}
 <form method="POST" class="space-y-4 flex flex-col">
-    <span class="text-center">Es-tu sûr de vouloir supprimer <strong>{{employe.nom}}</strong></span>
+    <span class="text-center">Es-tu sûr de vouloir supprimer ?<strong>{{employe.nom}}</strong></span>
     {% csrf_token %}
 
     
